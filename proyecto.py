@@ -13,7 +13,6 @@ def proyectil(V0, theta, B, g, dt, Xtot):
     T = []  # Lista para el tiempo
     V_x = []  # Lista para la velocidad en x
     V_y = []    # Lista para la velocidad en y
-    plt.figure(figsize=(10, 6))
 
     for i in range(Xtot):
         if y < 0:
@@ -52,7 +51,7 @@ V_y = sol_xy[4]
 
 #Creacion de los plots anidados en una sola figura
 
-figure, axis = plt.subplots(2, 2)   
+figure, axis = plt.subplots(2, 2, figsize=(12, 11))   
 # Para la figura de la posicion en x 
 axis[0, 0].plot(T, X, 'tab:orange') 
 axis[0, 0].set_title("Distancia en X vs Tiempo") 
@@ -94,6 +93,7 @@ plt.xlabel('Distancia en Y (m)')
 plt.ylabel('Distancia en X (m)')
 plt.title('Trayectoria del proyectil con y sin resistencia del aire')
 plt.legend() #para diferenciar cada curva
+plt.grid()
 plt.show()
 
 #aqui debemos agregar la interpretacion de la grafica!
@@ -128,19 +128,14 @@ max_theta = thetas[alcances_x.index(max_alcance)]
 # Imprimir el ángulo con el alcance máximo
 print(f'El ángulo que produce el alcance máximo sin resistencia al aire es: {max_theta} grados')
 
-    # Encontrar el ángulo que produce el alcance máximo
-max_alcance = max(alcances_x)
-max_theta = thetas[alcances_x.index(max_alcance)]
-
-# Imprimir el ángulo con el alcance máximo
-print(f'El ángulo que produce el alcance máximo sin resistencia al aire es: {max_theta} grados')
-
 
 ##########INCISO 5###########
 
 thetasB = []
 alcancesB_x = []
 alcancesB_y = []
+
+plt.figure(figsize=(11, 7)) #ajustar el tamaño de la grafica
 
 for anguloB in range(0,91,5):
         theta = math.radians(anguloB)
